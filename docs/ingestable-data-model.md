@@ -1,12 +1,14 @@
 # Ingestable Data Model
 
-When we accept concept and terminology data via github issues, we expect it to follow the pattern below. When we perform batch imports, we use a converter to transform data from an external format to this one.
+We accept concept and terminology data that follows the pattern as specified below[^1]. Such data can be provided
+- as single files, provided as a github.
+- as a batch (set) of markdown files in a directory that is accessible by some URL through some API (tbd). Accessing the API results in the files being converted from the provided format to the [internal data model](https://github.com/dhh1128/ctwg/blob/master/docs/internal-data-model.md).
 
 This is a format chosen for maximum ease of use by non-experts. It is de-normalized (in the sense understood by database theorists), meaning that the data may contain redundancies (e.g., multiple terms having the same definition). It does not contain metadata about history or status.
 
-This is NOT the same format that we use to maintain our corpus internally. That format is carefully normalized, with metadata, cross-links, and referential integrity enforced by tools.
+This is NOT the same format that we use to maintain our [corpus internally](https://github.com/dhh1128/ctwg/blob/master/docs/internal-data-model.md). That format is carefully normalized, with metadata, cross-links, and referential integrity enforced by tools.
 
-It is also NOT the same format that similar to the format that we emit to feed MkDocs, SpecUp, and other publishing tools -- except that the data is enriched when we emit it.
+It is also NOT the same [format that we emit](https://github.com/dhh1128/ctwg/blob/master/docs/exported-data-model.md) to feed MkDocs, SpecUp, and other publishing tools -- except that the data is enriched when we emit it.
 
 <hr>
 
@@ -24,3 +26,8 @@ It is also NOT the same format that similar to the format that we emit to feed M
 
 ## Tags
 >_Add any additional hash tags that you feel would allow grouping in useful ways. See https://github.com/dhh1128/ctwg/blob/master/docs/hash-tags.md for details and conventions._
+
+-----
+# Notes
+
+[^1]: Supporting other (e.g. richer and more complex) ingestable data models only requires an import script to be written (that converts this other model to the [internal data model](https://github.com/dhh1128/ctwg/blob/master/docs/internal-data-model.md), and make that script available for running through the/an API.
